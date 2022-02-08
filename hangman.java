@@ -1,12 +1,12 @@
 import java.util.*;
 import java.io.*;
 
-//Çà¸Ç °ÔÀÓ ³» ´Ü¾î¿Í °ü·ÃµÈ Å¬·¡½º
+//í–‰ë§¨ ê²Œì„ ë‚´ ë‹¨ì–´ì™€ ê´€ë ¨ëœ í´ë˜ìŠ¤
 class Alphabet{
 	StringBuffer tmp;
 	int a[];
 	HashMap<Character,Vector<Integer>> hm = new HashMap<Character,Vector<Integer>>();
-	//³­¼ö¿¡ ÀÇÇØ ÁöÁ¤µÈ ºó°÷¿¡ ¾ËÆÄºª ´ë½Å -¸¦ Áı¾î³Ö°í ¾ËÆÄºª°ú ¾ËÆÄºª¿¡ ÇØ´çÇÏ´Â À§Ä¡¸¦ HashMap¿¡ ÀúÀåÇÔ.
+	//ë‚œìˆ˜ì— ì˜í•´ ì§€ì •ëœ ë¹ˆê³³ì— ì•ŒíŒŒë²³ ëŒ€ì‹  -ë¥¼ ì§‘ì–´ë„£ê³  ì•ŒíŒŒë²³ê³¼ ì•ŒíŒŒë²³ì— í•´ë‹¹í•˜ëŠ” ìœ„ì¹˜ë¥¼ HashMapì— ì €ì¥í•¨.
 	public Alphabet(StringBuffer sb, int a[]) {
 		this.a = a;
 		this.tmp = sb;
@@ -25,13 +25,13 @@ class Alphabet{
 			tmp.insert(a[i], "-");
 		}
 	}
-	//Çà¸Ç °ÔÀÓ Çö »óÅÂÀÇ ¹®ÀÚ¿­À» º¸¿©ÁÜ.
+	//í–‰ë§¨ ê²Œì„ í˜„ ìƒíƒœì˜ ë¬¸ìì—´ì„ ë³´ì—¬ì¤Œ.
 	public void show() {
 		for(int i=0;i<tmp.length();i++) {
 			System.out.print(tmp.charAt(i));
 		}
 	}
-	//ÀÔ·Â¹ŞÀº ¹®ÀÚ·Î Çà¸ÇÀÇ ºó°÷À» ´ëÃ¼ÇÔ.
+	//ì…ë ¥ë°›ì€ ë¬¸ìë¡œ í–‰ë§¨ì˜ ë¹ˆê³³ì„ ëŒ€ì²´í•¨.
 	public boolean sub(String in) {
 		if(hm.containsKey(new Character(in.charAt(0)))){
 			Vector<Integer> v = hm.get(in.charAt(0));
@@ -46,7 +46,7 @@ class Alphabet{
 			return false;
 		}
 	}
-	//Ã³À½ ÀÔ·Â¹Ş¾Ò´ø ¹®ÀÚ¿­°ú ÇöÀçÀÇ ¹®ÀÚ¿­ÀÌ °°ÀºÁö ºñ±³ÇÔ.
+	//ì²˜ìŒ ì…ë ¥ë°›ì•˜ë˜ ë¬¸ìì—´ê³¼ í˜„ì¬ì˜ ë¬¸ìì—´ì´ ê°™ì€ì§€ ë¹„êµí•¨.
 	public boolean same(){
 		for(int i=0;i<tmp.length();i++) {
 			if((tmp.charAt(i))=='-') {
@@ -59,12 +59,12 @@ class Alphabet{
 
 public class problem9{
 	@SuppressWarnings("resource")
-	//¸ŞÀÎ ¸Ş¼Òµå Æ÷ÇÔ
+	//ë©”ì¸ ë©”ì†Œë“œ í¬í•¨
 	public static void main(String[] args) throws IOException {
-		//Çà¸Ç °ÔÀÓÀ» À§ÇÑ ´Ü¾î°¡ µé¾îÀÖ´Â ÅØ½ºÆ® ÆÄÀÏ ºÒ·¯¿À±â
+		//í–‰ë§¨ ê²Œì„ì„ ìœ„í•œ ë‹¨ì–´ê°€ ë“¤ì–´ìˆëŠ” í…ìŠ¤íŠ¸ íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸°
 		File f = new File("words.txt");
 		while(true) {
-			//ÆÄÀÏ¿¡ ÀÖ´Â ´Ü¾îÀÇ °³¼ö ÆÄ¾Ç
+			//íŒŒì¼ì— ìˆëŠ” ë‹¨ì–´ì˜ ê°œìˆ˜ íŒŒì•…
 			int filelength = 0;
 			FileReader fr = new FileReader(f);
 			int c;
@@ -73,9 +73,9 @@ public class problem9{
 					filelength++;
 			}
 			fr.close();
-			System.out.println("Áö±İºÎÅÍ Çà¸Ç °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+			System.out.println("ì§€ê¸ˆë¶€í„° í–‰ë§¨ ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 			Scanner sc = new Scanner(new FileReader(f));
-			//i¿¡ 0ºÎÅÍ ÆÄÀÏ¿¡ Á¸ÀçÇÏ´Â ´Ü¾î¼ö »çÀÌÀÇ ¹«ÀÛÀ§ ¼ıÀÚ¸¦ »ı¼ºÇÑ µÚ ±× ¼ıÀÚ¿¡ ÇØ´çÇÏ´Â ´Ü¾î¸¦ hangman¿¡ ÀúÀåÇÔ. 
+			//iì— 0ë¶€í„° íŒŒì¼ì— ì¡´ì¬í•˜ëŠ” ë‹¨ì–´ìˆ˜ ì‚¬ì´ì˜ ë¬´ì‘ìœ„ ìˆ«ìë¥¼ ìƒì„±í•œ ë’¤ ê·¸ ìˆ«ìì— í•´ë‹¹í•˜ëŠ” ë‹¨ì–´ë¥¼ hangmanì— ì €ì¥í•¨. 
 			int i = (int) Math.round(Math.random()*filelength);
 			int count = 0;
 			String hangman = null;
@@ -83,13 +83,13 @@ public class problem9{
 				hangman = sc.nextLine();
 				count++;
 			}
-			//´Ü¾î hangmanÀ» StringBuffer·Î ¹Ù²ã¼­ ÀúÀå
+			//ë‹¨ì–´ hangmanì„ StringBufferë¡œ ë°”ê¿”ì„œ ì €ì¥
 			StringBuffer sb = new StringBuffer(hangman);
 			sc = new Scanner(System.in);
-			//ÀÔ·Â¹ŞÀº °ÔÀÓ ³­ÀÌµµ¿¡ ÇØ´çÇÏ´Â ¼ıÀÚ¸¸Å­ hangman ´Ü¾î¿¡ »ı¼ºÇÒ ºó °ø°£ À§Ä¡¸¦ °áÁ¤ÇÏ´Â ¼ıÀÚ¸¦ »ı¼ºÇÔ.(´Ü, À§Ä¡°¡ Áßº¹µÇÁö ¾Ê°Ô »ı¼º)
+			//ì…ë ¥ë°›ì€ ê²Œì„ ë‚œì´ë„ì— í•´ë‹¹í•˜ëŠ” ìˆ«ìë§Œí¼ hangman ë‹¨ì–´ì— ìƒì„±í•  ë¹ˆ ê³µê°„ ìœ„ì¹˜ë¥¼ ê²°ì •í•˜ëŠ” ìˆ«ìë¥¼ ìƒì„±í•¨.(ë‹¨, ìœ„ì¹˜ê°€ ì¤‘ë³µë˜ì§€ ì•Šê²Œ ìƒì„±)
 			int tmp;
 			while(true) {
-				System.out.print("°ÔÀÓ ³­ÀÌµµ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.(1,2,3,4)>>");
+				System.out.print("ê²Œì„ ë‚œì´ë„ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.(1,2,3,4)>>");
 				tmp = sc.nextInt();
 				if(tmp+1<=sb.length()) {
 					break;
@@ -105,7 +105,7 @@ public class problem9{
 					}
 				}
 			}
-			//º»°İÀûÀÎ Çà¸Ç °ÔÀÓ ½ÃÀÛ, hangman´Ü¾î¸¦ Alphabet class¸¦ ÀÌ¿ëÇØ º¯Çü
+			//ë³¸ê²©ì ì¸ í–‰ë§¨ ê²Œì„ ì‹œì‘, hangmanë‹¨ì–´ë¥¼ Alphabet classë¥¼ ì´ìš©í•´ ë³€í˜•
 			int death = 0;
 			Alphabet al = new Alphabet(sb,a);
 			while(death<5) {
@@ -120,15 +120,15 @@ public class problem9{
 					}
 				}
 			}
-			//´Ü¾î ¸ÂÃß±â 5¹ø Æ²¸®¸é Ãâ·Â
+			//ë‹¨ì–´ ë§ì¶”ê¸° 5ë²ˆ í‹€ë¦¬ë©´ ì¶œë ¥
 			if(death==5) {
-				System.out.println("5¹ø ½ÇÆĞ ÇÏ¿´½À´Ï´Ù.");
+				System.out.println("5ë²ˆ ì‹¤íŒ¨ í•˜ì˜€ìŠµë‹ˆë‹¤.");
 				System.out.print(hangman);}
 			else {
 				System.out.print(hangman);
-				System.out.println("\n¸ÂÃè½À´Ï´Ù.");
+				System.out.println("\në§ì·„ìŠµë‹ˆë‹¤.");
 			}
-			//°ÔÀÓÀ» ´õ ÀÌ¾î³ª°¥ °ÍÀÎÁö °áÁ¤
+			//ê²Œì„ì„ ë” ì´ì–´ë‚˜ê°ˆ ê²ƒì¸ì§€ ê²°ì •
 			System.out.print("\nNext(y/n)?");
 			if(sc.next().equals("n")) {
 				sc.close();
